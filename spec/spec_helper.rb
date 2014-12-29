@@ -1,3 +1,2 @@
 require 'rspec'
-require 'simple/config'
-
+require 'mini/config'

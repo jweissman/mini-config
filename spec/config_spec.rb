@@ -1,9 +1,8 @@
 require 'spec_helper'
-require 'simple/config'
 
-#configurate
-module ExampleNamespace; include Simple::Config end
-module AnotherNamespace; include Simple::Config end
+# configurate some examples
+module ExampleNamespace; include Mini::Config end
+module AnotherNamespace; include Mini::Config end
 
 describe "simply configuring" do
   it 'should expose an OpenStruct called #config' do

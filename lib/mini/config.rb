@@ -1,7 +1,7 @@
 require 'ostruct'
-require 'simple/config/version'
+require 'mini/config/version'
 
-module Simple::Config
+module Mini::Config
   def self.included(base)
     base.send(:extend, ClassMethods)
   end
