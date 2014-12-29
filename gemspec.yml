@@ -1,6 +1,6 @@
 name: simple-config
-summary: "TODO: Summary"
-description: "TODO: Description"
+summary: minimal configuration methods for ruby
+description: a tiny-footprint config management thing for ruby
 license: MIT
 authors: Joseph Weissman
 email: jweissman1986@gmail.com
