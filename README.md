@@ -28,11 +28,21 @@
 
 ## Install
 
-    $ gem install simple-config
+    $ gem install mini-config
 
 ## Synopsis
 
-    $ simple-config
+    require 'mini/config'
+    
+    module ExampleNameSpace
+      include Mini::Config
+    end
+    
+    # now configurate!
+    ExampleNamespace.config.widget = { color: 'blue' }
+    
+    
+    
 
 ## Copyright
 
