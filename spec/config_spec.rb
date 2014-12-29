@@ -1,33 +1,16 @@
 require 'spec_helper'
 require 'simple/config'
 
-describe Simple::Config do
-  it "should have a VERSION constant" do
-    subject.const_get('VERSION').should_not be_empty
+#configurate
+module ExampleNamespace; include Simple::Config end
+module AnotherNamespace; include Simple::Config end
+
+describe "simply configuring" do
+  it 'should expose an OpenStruct called #config' do
+    expect(ExampleNamespace.config).to be_a(OpenStruct)
   end
 
-  it "should be configurable" do
-    Simple::Config.configure do |b| 
-      b.foo = "bar"  
-      b.baz = OpenStruct.new(quux: 'ilex')
-    end
-
-    expect(Simple::Config.config.foo).to eql("bar")
-    expect(Simple::Config.config.baz.quux).to eql("ilex")
-  end
-end
-
-module ExampleNamespace
-  include Simple::Config
-end
-
-describe ExampleNamespace do
-  it 'should be configurable' do
-    ExampleNamespace.config.bar = 'baz'
-    expect(ExampleNamespace.config.bar).to eql('baz')
-  end
-
-  it 'should be configurable with extended syntax' do
+  it 'should #configure with a block' do
     ExampleNamespace.configure do |en|
       en.quux = 'flick'
 
@@ -37,5 +20,12 @@ describe ExampleNamespace do
     
     expect(ExampleNamespace.config.quux).to eql('flick')
     expect(ExampleNamespace.config.x.dx).to eql(4)
+  end
+
+  it 'should not bleed between namespaces' do
+    ExampleNamespace.config.bar = 'baz'
+    AnotherNamespace.config.bar = 'foo'
+    expect(ExampleNamespace.config.bar).to eql('baz')
+    expect(AnotherNamespace.config.bar).to eql('foo')
   end
 end

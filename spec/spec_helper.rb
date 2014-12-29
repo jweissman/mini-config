@@ -1,4 +1,3 @@
 require 'rspec'
-require 'simple/config/version'
+require 'simple/config'
 
-include Simple::Config
