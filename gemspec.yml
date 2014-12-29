@@ -1,4 +1,4 @@
-name: simple-config
+name: simple_config
 summary: minimal configuration methods for ruby
 description: a tiny-footprint config management thing for ruby
 license: MIT
